@@ -1,18 +1,53 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <h2>Список задач</h2>
+    <div class="card">
+      <div class="card__list">
+        <TodoList 
+          v-for="todo in todos"
+          :key="todo.id"
+          :todoItem="todo"
+          @deleteTodosList="deleteTodosList"
+        />
+      </div>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import TodoList from '@/components/TodoList'
 
 export default {
+  components: { TodoList },
   name: 'Home',
-  components: {
-    HelloWorld
+  props: {
+    todos: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    deleteTodosList(idList) {
+      this.$emit('deleteTodoId', idList)
+    }
   }
 }
 </script>
+
+<style scoped>
+
+.card__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-flow: dense;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card__item {
+  background: #fff;
+  min-height: 50px;
+  box-shadow: 0 8px 16px rgb( 0 0 0 / 10% );
+  padding: 24px;
+  border-radius: 16px;
+}
+
+</style>

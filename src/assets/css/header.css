@@ -1,0 +1,39 @@
+.header__wrapper {
+  background: rgb(27, 67, 177);
+}
+
+.header__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.header__body a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__logo {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.header__nav {
+  display: flex;
+  gap: 30px;
+}
+
+.header__nav a {
+  padding: 10px 15px;
+  border-bottom: 3px solid transparent;
+  transition: .3s;
+}
+
+.header__nav .router-link-active {
+  border-bottom: 3px solid #FFA133;
+}
+
+.header__nav a:hover {
+  border-bottom: 3px solid #ffa03363;
+}
